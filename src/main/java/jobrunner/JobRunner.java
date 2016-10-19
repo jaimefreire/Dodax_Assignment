@@ -21,7 +21,7 @@ import java.util.concurrent.Future;
  */
 public class JobRunner {
 
-    private int max_parallel_jobs = 10;
+    private int max_parallel_jobs = 10; //Default value
 
     private long addedJobs = 0;
     private long runningJobs = 0;
@@ -37,7 +37,9 @@ public class JobRunner {
     /**
      * Constructor using a provided number of parallel instances or the default value of 10.
      *
-     * @param parallel_jobs Is the number of maximum parallel jobs ran by this jobrunner.JobRunner.
+     * @param jobs          Is a list of IJob's to be run.
+     * @param parallel_jobs Is the number of maximum parallel jobs ran by this {@link JobRunner} Defaults to 10.
+     *
      */
     public JobRunner(final List<IJob> jobs, final int parallel_jobs) {
         if (parallel_jobs <= 0) {
@@ -55,7 +57,7 @@ public class JobRunner {
 
 
     /**
-     * Alternative constructor
+     * Alternative constructor; jobList needs to be set before starting.
      */
     public JobRunner(int parallel_jobs) {
         this(null, parallel_jobs);
@@ -197,5 +199,8 @@ public class JobRunner {
         return this.finishedJobs;
     }
 
-    public enum states {INIT, READY, STARTED, FINISHED, ERROR}
+    //Different runner states that can be queried from caller
+    public enum states {
+        INIT, READY, STARTED, FINISHED, ERROR
+    }
 }
