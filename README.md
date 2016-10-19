@@ -18,5 +18,8 @@ Assumptions:
 Requirements.
 - At least Java Runtime Environment 8 is needed; the runner uses some lambdas, streams and the new Java DateTime API.
 
+Instructions.
+- Clone the git repository and run the tests with : gradle test (Around 80 seconds for this version).
+
 Jaime Freire
 jaime.freire@gmail.com
